@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum OrgStatus {
+  PENDING
+  MEMBER
+  VERIFIED
+  LAPSED
+  REVOKED
+}
+
+enum ActorType {
+  HUMAN
+  AGENT
+}
+
+model Org {
+  id                 String    @id @default(cuid())
+  slug               String    @unique
+  displayName        String
+  status             OrgStatus @default(PENDING)
+
+  // Entitlements (v0: fixed caps)
+  maxAgents          Int       @default(10)
+  maxVerifyPerMinute Int       @default(60)
+
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  users              User[]
+  agents             Agent[]
+  subscription       Subscription?
+}
+
+model User {
+  id        String   @id @default(cuid())
+  orgId     String
+  email     String
+  isAdmin   Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  org       Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@unique([orgId, email])
+}
+
+model Agent {
+  id            String   @id @default(cuid())
+  orgId         String
+  name          String
+
+  // Ed25519 public key (base64 or hex; we store as text for simplicity)
+  publicKey     String
+  lastRotatedAt DateTime?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  org           Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+
+  @@unique([orgId, name])
+}
+
+model Subscription {
+  id                 String   @id @default(cuid())
+  orgId              String   @unique
+
+  stripeCustomerId   String?  @unique
+  stripeSubscription String?  @unique
+
+  currentPeriodEnd   DateTime?
+  status             String?
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  org                Org      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+}
