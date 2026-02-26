@@ -5,7 +5,7 @@ function b64(u8: Uint8Array): string {
 }
 
 async function main() {
-  const priv = ed25519.utils.randomPrivateKey();
+  const priv = ed25519.utils.randomSecretKey();
   const pub = await ed25519.getPublicKeyAsync(priv);
 
   // Output is base64 (recommended)
