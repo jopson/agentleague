@@ -27,10 +27,10 @@ pnpm prisma generate
 ```
 
 ## Next build steps (queued)
-- Add Postgres (local docker compose or Neon)
-- Implement Ed25519 signed-request middleware
-- CRUD: org + agent issuance (enforce max 10)
-- rotate-key endpoint (cooldown + override)
-- `/verify/{agent_id}` endpoint + rate limit
+- ✅ Postgres (Neon)
+- ✅ Implement Ed25519 signed-request middleware
+- ✅ CRUD: org + agent issuance (enforce max 10)
+- ✅ rotate-key endpoint (cooldown + override)
+- ✅ `/verify/{agent_id}` endpoint + rate limit
 - Stripe subscription + webhook -> org.status
 - Minimal admin UI: billing + agents list
