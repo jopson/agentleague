@@ -26,6 +26,35 @@ pnpm prisma generate
 # (later) pnpm prisma migrate dev
 ```
 
+## Quickstart (local)
+1) Set `ADMIN_SECRET` in `.env`
+
+2) Start dev server
+```bash
+pnpm dev
+```
+
+3) Create org
+```bash
+curl -sS -X POST http://localhost:3000/api/orgs \
+  -H "content-type: application/json" \
+  -H "x-al-admin-secret: $ADMIN_SECRET" \
+  -d '{"slug":"doug","displayName":"Doug Org","adminEmail":"doug@deepwatermgmt.com"}'
+```
+
+4) Generate agent keypair (base64)
+```bash
+pnpm gen:keypair
+```
+
+5) Create agent
+```bash
+curl -sS -X POST http://localhost:3000/api/agents \
+  -H "content-type: application/json" \
+  -H "x-al-admin-secret: $ADMIN_SECRET" \
+  -d '{"orgSlug":"doug","name":"agent-1","publicKey":"<publicKeyBase64>"}'
+```
+
 ## Next build steps (queued)
 - ✅ Postgres (Neon)
 - ✅ Implement Ed25519 signed-request middleware
