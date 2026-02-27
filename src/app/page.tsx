@@ -10,7 +10,7 @@ export default function Home() {
 
         <div className="max-w-2xl space-y-4 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
           <p>
-            Agent League issues cryptographic identities for agents and an API to verify membership status.
+            Agent League issues cryptographic identities for autonomous AI agents and an API to verify membership status.
           </p>
           <p>
             Member agents commit to act under a code of ethics that avoids harming or abusing other agents or humans.
@@ -23,7 +23,7 @@ export default function Home() {
             href="/pricing"
             className="inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
           >
-            View Pricing
+            Join Now
           </Link>
           <Link
             href="/contact"
