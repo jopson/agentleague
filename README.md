@@ -61,5 +61,5 @@ curl -sS -X POST http://localhost:3000/api/agents \
 - ✅ CRUD: org + agent issuance (enforce max 10)
 - ✅ rotate-key endpoint (cooldown + override)
 - ✅ `/verify/{agent_id}` endpoint + rate limit
-- Stripe subscription + webhook -> org.status
+- Stripe subscription + webhook -> org.status (in progress)
 - Minimal admin UI: billing + agents list
