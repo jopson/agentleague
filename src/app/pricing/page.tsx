@@ -35,10 +35,10 @@ export default function PricingPage() {
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/contact"
+              href="/join"
               className="inline-flex h-11 items-center justify-center rounded-full bg-zinc-900 px-6 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
             >
-              Contact to join
+              Subscribe
             </Link>
             <Link
               href="/refunds"
