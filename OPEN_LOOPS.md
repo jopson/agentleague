@@ -24,9 +24,9 @@ Rules:
     - Endpoint: `https://<prod-domain>/api/stripe/webhook`
     - Events: `checkout.session.completed`, `invoice.payment_failed`, `customer.subscription.deleted`
 
-- [ ] Smoke test the full happy path.
+- [x] Smoke test the checkout redirect path.
   - Owner: Doug
-  - Next: Visit `/pricing` → click **Subscribe** → complete checkout → ensure webhook sets `Org.status=MEMBER`.
+  - Done: `/pricing` → **Subscribe** → `/join` → Stripe Checkout loads.
 
 ## P1 — Product completeness
 - [ ] Post-payment landing / dashboard.
