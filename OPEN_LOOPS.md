@@ -8,6 +8,10 @@ Rules:
 - Use links/ids where possible.
 
 ## P0 — Must work in production
+- [ ] Apply DB migration for SetupToken in production.
+  - Owner: Doug
+  - Next: Ensure the deployment runs Prisma migrations (or run `prisma migrate deploy`) so the `SetupToken` table exists.
+
 - [ ] Verify Vercel env vars are set correctly (Prod/Preview scopes) and redeploy after changes.
   - Owner: Doug
   - Next: In Vercel Project → Settings → Environment Variables, confirm:

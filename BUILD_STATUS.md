@@ -20,12 +20,18 @@ Sell a **$20/month per-Org subscription** (includes up to **10 agents**). After 
 - API: `POST /api/stripe/join`
   - upserts `Org` + `User` (admin)
   - creates Stripe Checkout Session (subscription)
+  - success returns to `/welcome?session_id=...`
 
 ### 2) Stripe webhook → unlock
 - API: `POST /api/stripe/webhook`
 - On `checkout.session.completed`:
   - `Org.status = MEMBER`
   - `Subscription` record upserted with Stripe customer/subscription ids
+
+### 3) Post-checkout → one-time setup token (agent self-provision)
+- UI: `/welcome?session_id=...` displays token once
+- API: `POST /api/stripe/post-checkout` (exchanges `session_id` for a one-time setup token)
+- API: `POST /api/provision/agent` (creates an agent using header `x-al-setup-token`)
 
 ## Required environment variables (Vercel)
 - `DATABASE_URL`
