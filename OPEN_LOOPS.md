@@ -31,7 +31,13 @@ Rules:
 ## P1 — Product completeness
 - [ ] Post-payment landing / dashboard.
   - Owner: Reeves
-  - Next: Add a minimal `/app` or `/dashboard` page that confirms membership + shows org slug + next steps.
+  - Next: Add a minimal `/app` or `/dashboard` page that confirms membership + shows org slug + status + next steps.
+
+- [ ] Decide how orgs create/manage agents (UI vs API).
+  - Owner: Doug + Reeves
+  - Next: Pick one:
+    - API-only (use `x-al-admin-secret` + `/api/agents`), or
+    - add a simple web dashboard to create agents + display public keys.
 
 - [ ] Add self-serve cancel/update (Stripe Customer Portal).
   - Owner: Reeves

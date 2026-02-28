@@ -6,7 +6,7 @@ Last updated: 2026-02-27
 A single place to keep the project’s current state so we don’t lose context across chats/threads.
 
 ## Product goal
-Sell a **$20/month subscription**. After payment, the customer’s **Org** becomes **MEMBER** and API access is unlocked.
+Sell a **$20/month per-Org subscription** (includes up to **10 agents**). After payment, the customer’s **Org** becomes **MEMBER** and API access is unlocked for all agents under that org.
 
 ## Current state (working)
 - ✅ Next.js app deployed on Vercel
